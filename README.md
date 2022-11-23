@@ -35,3 +35,53 @@ __Right Turn__
 
 The dataset contains images of different size and therefore some level of preprocessing is done to convert the data into more manageble form. After preprocessing the data, we get a NxN matrix with rows representing the pixel density of an image.
 
+## Results
+
+We run the NN algorithm for 2 epochs.
+```
+model.compile(loss="sparse_categorical_crossentropy", optimizer="Adamax", metrics=["accuracy"])
+history = model.fit(x_train, y_train, epochs=20)
+```
+## Output
+```
+Epoch 1/20
+1226/1226 [==============================] - 17s 12ms/step - loss: 1.6335 - accuracy: 0.5791
+Epoch 2/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.6847 - accuracy: 0.8086
+Epoch 3/20
+1226/1226 [==============================] - 17s 14ms/step - loss: 0.4803 - accuracy: 0.8636
+Epoch 4/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.3898 - accuracy: 0.8873
+Epoch 5/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.3312 - accuracy: 0.9022
+Epoch 6/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.2937 - accuracy: 0.9145
+Epoch 7/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.2589 - accuracy: 0.9245
+Epoch 8/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.2310 - accuracy: 0.9313
+Epoch 9/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.2045 - accuracy: 0.9397
+Epoch 10/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.2028 - accuracy: 0.9396
+Epoch 11/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.1809 - accuracy: 0.9460
+Epoch 12/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1780 - accuracy: 0.9459
+Epoch 13/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1601 - accuracy: 0.9515
+Epoch 14/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.1544 - accuracy: 0.9527
+Epoch 15/20
+1226/1226 [==============================] - 15s 13ms/step - loss: 0.1466 - accuracy: 0.9555
+Epoch 16/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1383 - accuracy: 0.9574
+Epoch 17/20
+1226/1226 [==============================] - 16s 13ms/step - loss: 0.1357 - accuracy: 0.9576
+Epoch 18/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1212 - accuracy: 0.9627
+Epoch 19/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1120 - accuracy: 0.9656
+Epoch 20/20
+1226/1226 [==============================] - 15s 12ms/step - loss: 0.1127 - accuracy: 0.9656
+```
