@@ -37,7 +37,7 @@ The dataset contains images of different size and therefore some level of prepro
 
 ## Results
 
-We run the NN algorithm for 2 epochs.
+We run the NN algorithm for 20 epochs.
 ```
 model.compile(loss="sparse_categorical_crossentropy", optimizer="Adamax", metrics=["accuracy"])
 history = model.fit(x_train, y_train, epochs=20)
