@@ -1,5 +1,4 @@
-# traffic_sign_detection
-traffic sign detection using ML
+# Traffic sign detection using Machine Learning
 
 In the below code, I use ML tools to identify road traffic signs. This can be a good autonomous driving support for drivers with low to medium driving experience. 
 
@@ -12,11 +11,11 @@ Simple ML techniques from SKLearn will not return very high accuracy. Support Ve
 
 ### Neural Networks improve accuracy to 96.5%
 The above results are not good although quite expected since these models are not very powerful when it comes to high dimensional data.
-To improve our performance, I look at neural network models. I use 4 dense layers with ‘relu’ activation function and ‘HEUniform’ kernel initializer for back-propagation. The final layer uses softmax activation layer to predict the class. Finally, I use ‘sparse_categorical_crossentropy’ loss function and ‘Adamax’ optimizer to compile the model. 
+To improve our performance, we look at neural network models. I use 4 dense layers with ‘relu’ activation function and ‘HEUniform’ kernel initializer for back-propagation. The final layer uses softmax activation layer to predict the class. Finally, I use ‘sparse_categorical_crossentropy’ loss function and ‘Adamax’ optimizer to compile the model. 
 The accuracy score for 5-layer ANN comes out to 96.5%.
-### Convolutional layer imrpoves the accuracy to 99%
+### Convolutional layer imrpoves the accuracy to >99%
 
-The final version uses convolution layer. In this version, I load the previous model with convolutional layer to further improve the accuracy score. 
+In the final version, I load the previous model with convolutional layer to further improve the accuracy score. Adding ```Conv2D``` layer requires a lot of memory and makes the training slow. Nonetheless, we achieve a training accuracy of 99.75%.  
 
 ### Dataset
 For the purpose of this study, I use the [GTSRB - German Traffic Sign Recognition Benchmark](https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign) which has over 50k images of road signs in Germany along with their respective classes. Some of the images are shown below 
@@ -35,9 +34,9 @@ __Right Turn__
 
 The dataset contains images of different size and therefore some level of preprocessing is done to convert the data into more manageble form. After preprocessing the data, we get a NxN matrix with rows representing the pixel density of an image.
 
-## Results
+## Results ANN Model
 
-We run the NN algorithm for 20 epochs.
+We run the ANN algorithm for 20 epochs.
 ```
 model.compile(loss="sparse_categorical_crossentropy", optimizer="Adamax", metrics=["accuracy"])
 history = model.fit(x_train, y_train, epochs=20)
@@ -48,40 +47,39 @@ Epoch 1/20
 1226/1226 [==============================] - 17s 12ms/step - loss: 1.6335 - accuracy: 0.5791
 Epoch 2/20
 1226/1226 [==============================] - 16s 13ms/step - loss: 0.6847 - accuracy: 0.8086
-Epoch 3/20
-1226/1226 [==============================] - 17s 14ms/step - loss: 0.4803 - accuracy: 0.8636
-Epoch 4/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.3898 - accuracy: 0.8873
-Epoch 5/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.3312 - accuracy: 0.9022
-Epoch 6/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.2937 - accuracy: 0.9145
-Epoch 7/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.2589 - accuracy: 0.9245
-Epoch 8/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.2310 - accuracy: 0.9313
-Epoch 9/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.2045 - accuracy: 0.9397
-Epoch 10/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.2028 - accuracy: 0.9396
-Epoch 11/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.1809 - accuracy: 0.9460
-Epoch 12/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.1780 - accuracy: 0.9459
-Epoch 13/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.1601 - accuracy: 0.9515
-Epoch 14/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.1544 - accuracy: 0.9527
-Epoch 15/20
-1226/1226 [==============================] - 15s 13ms/step - loss: 0.1466 - accuracy: 0.9555
-Epoch 16/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.1383 - accuracy: 0.9574
-Epoch 17/20
-1226/1226 [==============================] - 16s 13ms/step - loss: 0.1357 - accuracy: 0.9576
-Epoch 18/20
-1226/1226 [==============================] - 15s 12ms/step - loss: 0.1212 - accuracy: 0.9627
+
+.
+.
+.
+.
 Epoch 19/20
 1226/1226 [==============================] - 15s 12ms/step - loss: 0.1120 - accuracy: 0.9656
 Epoch 20/20
 1226/1226 [==============================] - 15s 12ms/step - loss: 0.1127 - accuracy: 0.9656
+```
+
+## Results CNN Model
+We run the CNN algorithm for 11 epochs.
+```
+model.compile(loss="sparse_categorical_crossentropy", optimizer="Adamax", metrics=["accuracy"])
+history = model.fit(x_train, y_train, epochs=20)
+```
+
+### Output
+```
+Epoch 1/20
+1226/1226 [==============================] - 140s 113ms/step - loss: 0.8862 - accuracy: 0.7881
+Epoch 2/20
+1226/1226 [==============================] - 133s 109ms/step - loss: 0.1812 - accuracy: 0.9549
+Epoch 3/20
+1226/1226 [==============================] - 133s 109ms/step - loss: 0.0977 - accuracy: 0.9752
+.
+.
+.
+Epoch 9/20
+1226/1226 [==============================] - 133s 108ms/step - loss: 0.0226 - accuracy: 0.9938
+Epoch 10/20
+1226/1226 [==============================] - 135s 110ms/step - loss: 0.0168 - accuracy: 0.9957
+Epoch 11/20
+1226/1226 [==============================] - 133s 109ms/step - loss: 0.0122 - accuracy: 0.9970
 ```
